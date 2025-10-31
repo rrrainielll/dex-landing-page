@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dex-server.space</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #0a0a0a, #000);
+      color: #e5e5e5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4fc3f7, #81c784, #9575cd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #bdbdbd;
+      max-width: 500px;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.6;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .email-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      animation: fadeInUp 1.4s ease-out;
+    }
+
+    .email-container:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .email-text {
+      color: #e0e0e0;
+      font-weight: 500;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .copy-icon {
+      width: 20px;
+      height: 20px;
+      color: #81c784;
+    }
+
+    .copied {
+      color: #4fc3f7;
+      transition: color 0.3s ease;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.85rem;
+      color: #777;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(79,195,247,0.15), transparent 70%);
+      filter: blur(80px);
+      z-index: -1;
+      animation: pulse 6s infinite alternate ease-in-out;
+    }
+
+    .glow:nth-child(1) { top: -100px; left: -100px; }
+    .glow:nth-child(2) { bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(149,117,205,0.15), transparent 70%); }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 0.6; }
+      to { transform: scale(1.3); opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="glow"></div>
+
+  <h1>dex-server.space</h1>
+  <p>This domain is reserved for <strong>personal, family, and friends</strong> use only.  
+     Unauthorized access or use is strictly prohibited.</p>
+
+  <div class="email-container" id="copyEmail">
+    <a href="#" class="email-text" id="emailText">rainielmontanez@dex-server.space</a>
+    <i data-lucide="copy" class="copy-icon" id="copyIcon"></i>
+  </div>
+
+  <footer>© 2025 dex-server.space — Private Domain</footer>
+
+  <script>
+    lucide.createIcons();
+
+    const copyEmail = document.getElementById("copyEmail");
+    const emailText = document.getElementById("emailText");
+    const copyIcon = document.getElementById("copyIcon");
+
+    // Email details
+    const emailAddress = "rainielmontanez@dex-server.space";
+    const subject = "I have a question Rain";
+    const body = `name: (replace with your name)%0D%0Aconcern:%0D%0Ahelp me:%0D%0A`;
+    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    // Clicking anywhere in the email container opens mail app
+    emailText.setAttribute("href", mailtoLink);
+    emailText.setAttribute("target", "_blank");
+
+    // Copy-to-clipboard on icon click
+    copyIcon.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      navigator.clipboard.writeText(emailAddress);
+      copyIcon.setAttribute("data-lucide", "check");
+      copyIcon.classList.add("copied");
+      lucide.createIcons();
+      setTimeout(() => {
+        copyIcon.setAttribute("data-lucide", "copy");
+        copyIcon.classList.remove("copied");
+        lucide.createIcons();
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
