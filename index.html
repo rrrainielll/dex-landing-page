@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dex-server.space</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * {
@@ -14,7 +14,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Kode Mono', monospace;
       background: radial-gradient(circle at top, #0a0a0a, #000);
       color: #e5e5e5;
       min-height: 100vh;
@@ -24,22 +24,29 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
+      padding: 1rem; /* Add padding for smaller screens */
+    }
+
+    .container {
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 5vw, 3rem); /* Make font size responsive */
       font-weight: 800;
       background: linear-gradient(135deg, #4fc3f7, #81c784, #9575cd);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
       animation: fadeInDown 1s ease-out;
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem); /* Make font size responsive */
       color: #bdbdbd;
-      max-width: 500px;
       margin: 0 auto 1.5rem auto;
       line-height: 1.6;
       animation: fadeInUp 1.2s ease-out;
@@ -121,30 +128,47 @@
       from { transform: scale(1); opacity: 0.6; }
       to { transform: scale(1.3); opacity: 0.9; }
     }
+    
+    .note-text {
+        font-size: 0.9rem;
+        color: #9e9e9e;
+        margin-top: 1rem;
+        animation: colorCycle 10s infinite alternate;
+    }
+
+    @keyframes colorCycle {
+        0%   { color: #9e9e9e; }
+        25%  { color: #4fc3f7; }
+        50%  { color: #81c784; }
+        75%  { color: #9575cd; }
+        100% { color: #9e9e9e; }
+    }
   </style>
 </head>
 <body>
   <div class="glow"></div>
   <div class="glow"></div>
 
-  <h1>dex-server.space</h1>
-  <p>This domain is reserved for <strong>personal, family, and friends</strong> use only.  
-     Unauthorized access or use is strictly prohibited.</p>
-
-  <div class="email-container" id="copyEmail">
-    <a href="#" class="email-text" id="emailText">rainielmontanez@dex-server.space</a>
-    <i data-lucide="copy" class="copy-icon" id="copyIcon"></i>
-  </div>
-
-  <div class="email-container" style="margin-top: 1rem;">
-    <a href="https://blog.dex-server.space" class="email-text" target="_blank">
-      View Blog by Rainiel Montañez
-    </a>
-  </div>
-
-  <p style="font-size: 0.9rem; color: #9e9e9e; margin-top: 1rem;">
-    Note: The blog is not always available and it will be available once admin is online on the computer. Hope you're lucky!!!
-  </p>
+  <main class="container">
+    <h1>dex-server.space</h1>
+    <p>This domain is reserved for <strong>personal, family, and friends</strong> use only.  
+       Unauthorized access or use is strictly prohibited.</p>
+  
+    <div class="email-container" id="copyEmail">
+      <a href="#" class="email-text" id="emailText">rainielmontanez@dex-server.space</a>
+      <i data-lucide="copy" class="copy-icon" id="copyIcon"></i>
+    </div>
+  
+    <div class="email-container" style="margin-top: 1rem;">
+      <a href="https://blog.dex-server.space" class="email-text" target="_blank">
+        View Blog by Rainiel Montañez
+      </a>
+    </div>
+  
+    <p class="note-text">
+      Note: The blog is not always available and it will be available once admin is online on the computer. Hope you're lucky!!!
+    </p>
+  </main>
 
   <footer>© 2025 dex-server.space — Private Domain</footer>
 
